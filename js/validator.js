@@ -99,6 +99,9 @@
 
     if ($el.is('[type="radio"]')) $el = this.$element.find('input[name="' + $el.attr('name') + '"]')
 
+    /* is jQuery UI Selectmenu? */
+    if ($el.is('.ui-selectmenu-button')) { $el = $el.prev("select"); }
+    
     this.$element.trigger(e = $.Event('validate.bs.validator', {relatedTarget: $el[0]}))
 
     if (e.isDefaultPrevented()) return
